@@ -38,10 +38,10 @@ ImRect math::calculate_player_ent_bbox( vec3_t position, float height )
     ImVec2 const min = { calc_top - width / 2 - 1, top.y - 1 };
 
     ImRect const bounds = {
-        { static_cast< int >( min.x ),
-          static_cast< int >( min.y ) },
-        { static_cast< int >( ( calc_bottom + width / 2 + 1 ) ),
-          static_cast< int >( ( bottom.y + 1 ) ) } };
+        { static_cast< float >( static_cast< int >( min.x ) ),
+          static_cast< float >( static_cast< int >( min.y ) ) },
+        { static_cast< float >( static_cast< int >( ( calc_bottom + width / 2 + 1 ) ) ),
+          static_cast< float >( static_cast< int >( ( bottom.y + 1 ) ) ) } };
 
     return bounds;
 }
