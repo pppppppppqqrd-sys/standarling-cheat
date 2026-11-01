@@ -1,3 +1,4 @@
+#define IMGUI_DEFINE_MATH_OPERATORS
 #include "esp.hpp"
 
 #include "game/sdk/axlebolt/player_controller/player_controller.hpp"

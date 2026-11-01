@@ -1,3 +1,4 @@
+#define IMGUI_DEFINE_MATH_OPERATORS
 #include "players.hpp"
 
 void c_esp_player::render_rect( ) const
