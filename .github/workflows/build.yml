@@ -25,6 +25,15 @@ jobs:
           brew install ldid xz
           echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
 
+      - name: Install ImGui
+        run: |
+          git clone https://github.com/ocornut/imgui.git --branch v1.90.4 --depth 1
+          mkdir -p src/cpp/imgui
+          cp imgui/*.h src/cpp/imgui/
+          cp imgui/*.cpp src/cpp/imgui/
+          cp imgui/backends/imgui_impl_metal.h src/cpp/imgui/ 2>/dev/null || true
+          cp imgui/backends/imgui_impl_metal.mm src/cpp/imgui/ 2>/dev/null || true
+
       - name: Build
         run: make -j$(sysctl -n hw.ncpu)
 

@@ -10,12 +10,14 @@ standarling_CFLAGS = -fobjc-arc \
                      -Isrc/cpp \
                      -Isrc/cpp/game \
                      -Isrc/cpp/game/sdk \
+                     -Isrc/cpp/imgui \
                      -w
 
 standarling_CCFLAGS = -std=c++20 \
                       -Isrc/cpp \
                       -Isrc/cpp/game \
                       -Isrc/cpp/game/sdk \
+                      -Isrc/cpp/imgui \
                       -w
 
 standarling_FRAMEWORKS = UIKit Foundation CoreGraphics
