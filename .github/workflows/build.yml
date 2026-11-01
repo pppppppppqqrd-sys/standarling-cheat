@@ -1,0 +1,36 @@
+name: Build dylib
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Theos
+        uses: actions/checkout@v4
+        with:
+          repository: theos/theos
+          path: theos
+          submodules: recursive
+
+      - name: Install dependencies
+        run: |
+          brew install ldid xz
+          echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
+
+      - name: Build
+        run: make -j$(sysctl -n hw.ncpu)
+
+      - name: Upload dylib
+        uses: actions/upload-artifact@v4
+        with:
+          name: cheat-dylib
+          path: .theos/obj/debug/*.dylib
+          retention-days: 7
